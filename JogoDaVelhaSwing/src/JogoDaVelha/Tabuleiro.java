@@ -2,7 +2,8 @@ package JogoDaVelha;
 
 
 public class Tabuleiro extends javax.swing.JFrame {
-    int turno = 0;
+    static int turno = 0;
+    
     boolean posicao1 = false;
     boolean posicao2 = false;
     boolean posicao3 = false;
@@ -13,14 +14,17 @@ public class Tabuleiro extends javax.swing.JFrame {
     boolean posicao8 = false;
     boolean posicao9 = false;
     
-    public void SetTurno(int t) {
-        this.turno = t;
-    }
+public void quemGanhou() {
     
-    public int GetTurno() {
-        return this.turno;
-    }
-    
+}
+
+public void vezDeQuem() {
+        if (turno == 0) {
+            lblVezDeQuem.setText("O");
+        }else if (turno == 1) {
+            lblVezDeQuem.setText("X");
+        }
+}
   
     public Tabuleiro() {
         initComponents();
@@ -46,8 +50,12 @@ public class Tabuleiro extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Jogo da velha");
 
         Campo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,7 +69,10 @@ public class Tabuleiro extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         jLabel2.setText("Jogando: ");
+
+        lblVezDeQuem.setText("X");
 
         Campo4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,19 +130,28 @@ public class Tabuleiro extends javax.swing.JFrame {
         jSeparator4.setBackground(new java.awt.Color(1, 1, 1));
         jSeparator4.setForeground(new java.awt.Color(1, 1, 1));
 
+        jMenu1.setText("Novo Jogo");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Opções");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblVezDeQuem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(261, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(17, 17, 17)
-                            .addComponent(lblVezDeQuem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(Campo3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(100, 100, 100)
@@ -167,13 +187,14 @@ public class Tabuleiro extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblVezDeQuem, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(0, 259, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addComponent(lblVezDeQuem, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 27, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(170, 170, 170)
@@ -210,22 +231,25 @@ public class Tabuleiro extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(90, 90, 90)
                             .addComponent(Campo8, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 2, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void Campo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo1ActionPerformed
+        vezDeQuem();
         if (turno == 0) {
             Campo1.setText("X");
             posicao1 = true;
+            turno = 1;
                 if (posicao1 == true) {
                     Campo1.setEnabled(false);
             }
         }else if (turno == 1) {
             Campo1.setText("O");
             posicao1 = true;
+            turno = 0;
                 if (posicao1 == true) {
                     Campo1.setEnabled(false);
                 }
@@ -233,15 +257,18 @@ public class Tabuleiro extends javax.swing.JFrame {
     }//GEN-LAST:event_Campo1ActionPerformed
 
     private void Campo4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo4ActionPerformed
+        vezDeQuem();
         if (turno == 0) {
             Campo4.setText("X");
             posicao4 = true;
+            turno = 1;
                 if (posicao4 == true) {
                     Campo4.setEnabled(false);
             }
         }else if (turno == 1) {
             Campo4.setText("O");
             posicao4 = true;
+            turno = 0;
                 if (posicao4 == true) {
                     Campo4.setEnabled(false);
                 }
@@ -249,36 +276,140 @@ public class Tabuleiro extends javax.swing.JFrame {
     }//GEN-LAST:event_Campo4ActionPerformed
 
     private void Campo7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo7ActionPerformed
-        posicao7 = true;
+        vezDeQuem();
+        if (turno == 0) {
+            Campo7.setText("X");
+            posicao7 = true;
+            turno = 1;
+                if (posicao7 == true) {
+                    Campo7.setEnabled(false);
+            }
+        }else if (turno == 1) {
+            Campo7.setText("O");
+            posicao7 = true;
+            turno = 0;
+                if (posicao7 == true) {
+                    Campo7.setEnabled(false);
+                }
+        }
     }//GEN-LAST:event_Campo7ActionPerformed
 
     private void Campo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo2ActionPerformed
-        posicao2 = true;
+        vezDeQuem();
+        if (turno == 0) {
+            Campo2.setText("X");
+            posicao2 = true;
+            turno = 1;
+                if (posicao2 == true) {
+                    Campo2.setEnabled(false);
+            }
+        }else if (turno == 1) {
+            Campo2.setText("O");
+            posicao2 = true;
+            turno = 0;
+                if (posicao2 == true) {
+                    Campo2.setEnabled(false);
+                }
+        }
     }//GEN-LAST:event_Campo2ActionPerformed
 
     private void Campo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo3ActionPerformed
-        posicao3 = true;
+        vezDeQuem();
+        if (turno == 0) {
+            Campo3.setText("X");
+            posicao3 = true;
+            turno = 1;
+                if (posicao3 == true) {
+                    Campo3.setEnabled(false);
+            }
+        }else if (turno == 1) {
+            Campo3.setText("O");
+            posicao3 = true;
+            turno = 0;
+                if (posicao3 == true) {
+                    Campo3.setEnabled(false);
+                }
+        }
     }//GEN-LAST:event_Campo3ActionPerformed
 
     private void Campo5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo5ActionPerformed
-        posicao5 = true;
+        vezDeQuem();
+        if (turno == 0) {
+            Campo5.setText("X");
+            posicao5 = true;
+            turno = 1;
+                if (posicao5 == true) {
+                    Campo5.setEnabled(false);
+            }
+        }else if (turno == 1) {
+            Campo5.setText("O");
+            posicao5 = true;
+            turno = 0;
+                if (posicao5 == true) {
+                    Campo5.setEnabled(false);
+                }
+        }
     }//GEN-LAST:event_Campo5ActionPerformed
 
     private void Campo6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo6ActionPerformed
-        posicao6 = true;
+        vezDeQuem();
+        if (turno == 0) {
+            Campo6.setText("X");
+            posicao6 = true;
+            turno = 1;
+                if (posicao6 == true) {
+                    Campo6.setEnabled(false);
+            }
+        }else if (turno == 1) {
+            Campo6.setText("O");
+            posicao6 = true;
+            turno = 0;
+                if (posicao6 == true) {
+                    Campo6.setEnabled(false);
+                }
+        }
     }//GEN-LAST:event_Campo6ActionPerformed
 
     private void Campo8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo8ActionPerformed
-       posicao8 = true;
+        vezDeQuem();
+        if (turno == 0) {
+            Campo8.setText("X");
+            posicao8 = true;
+            turno = 1;
+                if (posicao8 == true) {
+                    Campo8.setEnabled(false);
+            }
+        }else if (turno == 1) {
+            Campo8.setText("O");
+            posicao8 = true;
+            turno = 0;
+                if (posicao8 == true) {
+                    Campo8.setEnabled(false);
+                }
+        }
     }//GEN-LAST:event_Campo8ActionPerformed
 
     private void Campo9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo9ActionPerformed
-        posicao9 = true;
+      vezDeQuem();
+        if (turno == 0) {
+            Campo9.setText("X");
+            posicao9 = true;
+            turno = 1;
+                if (posicao9 == true) {
+                    Campo9.setEnabled(false);
+            }
+        }else if (turno == 1) {
+            Campo9.setText("O");
+            posicao9 = true;
+            turno = 0;
+                if (posicao9 == true) {
+                    Campo9.setEnabled(false);
+                }
+        }
     }//GEN-LAST:event_Campo9ActionPerformed
 
    
     public static void main(String args[]) {
-        
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -320,6 +451,9 @@ public class Tabuleiro extends javax.swing.JFrame {
     private javax.swing.JButton Campo8;
     private javax.swing.JButton Campo9;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
