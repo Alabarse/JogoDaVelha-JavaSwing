@@ -1,8 +1,11 @@
 package JogoDaVelha;
 
+import java.util.Random;
+
 
 public class Tabuleiro extends javax.swing.JFrame {
     static int turno = 0;
+    static boolean doisJogadores = false;
     
     boolean posicao1 = false;
     boolean posicao2 = false;
@@ -13,6 +16,48 @@ public class Tabuleiro extends javax.swing.JFrame {
     boolean posicao7 = false;
     boolean posicao8 = false;
     boolean posicao9 = false;
+    
+    public void vsCPU(){
+        Random random = new Random();
+        int valorAleatorio = random.nextInt(9) + 0;
+        if (valorAleatorio == 1) {
+            if (Campo1.getText().equalsIgnoreCase("")) {
+                Campo1.setText("O"); 
+        }else if (valorAleatorio == 2) {
+            if (Campo2.getText().equalsIgnoreCase("")) {
+                Campo2.setText("O"); 
+        }else if (valorAleatorio == 3) {
+            if (Campo3.getText().equalsIgnoreCase("")) {
+                Campo3.setText("O"); 
+        }else if (valorAleatorio == 4) {
+            if (Campo4.getText().equalsIgnoreCase("")) {
+                Campo4.setText("O"); 
+        }else if (valorAleatorio == 5) {
+            if (Campo5.getText().equalsIgnoreCase("")) {
+                Campo5.setText("O"); 
+        }else if (valorAleatorio == 6) {
+            if (Campo6.getText().equalsIgnoreCase("")) {
+                Campo6.setText("O"); 
+        }else if (valorAleatorio == 7) {
+            if (Campo7.getText().equalsIgnoreCase("")) {
+                Campo7.setText("O"); 
+        }else if (valorAleatorio == 8) {
+            if (Campo8.getText().equalsIgnoreCase("")) {
+                Campo8.setText("O"); 
+        }else if (valorAleatorio == 9) {
+            if (Campo9.getText().equalsIgnoreCase("")) {
+                Campo9.setText("O"); 
+                                           }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }   
+            }
+        }
+    }
     
 public static void quemGanhou() {
     
@@ -236,7 +281,11 @@ public void vezDeQuem() {
         lblGanhador = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        ModoDeJogo = new javax.swing.JMenu();
+        DoisJogadores = new javax.swing.JMenuItem();
+        vsCPU = new javax.swing.JMenuItem();
+        Opcoes = new javax.swing.JMenu();
+        Exit = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Jogo da velha");
@@ -317,10 +366,35 @@ public void vezDeQuem() {
         lblGanhador.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         jMenu1.setText("Novo Jogo");
+
+        ModoDeJogo.setText("Modo de Jogo");
+
+        DoisJogadores.setText("2 X 2");
+        DoisJogadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DoisJogadoresActionPerformed(evt);
+            }
+        });
+        ModoDeJogo.add(DoisJogadores);
+
+        vsCPU.setText("Vs CPU");
+        ModoDeJogo.add(vsCPU);
+
+        jMenu1.add(ModoDeJogo);
+
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Opções");
-        jMenuBar1.add(jMenu2);
+        Opcoes.setText("Opções");
+
+        Exit.setText("Sair");
+        Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitActionPerformed(evt);
+            }
+        });
+        Opcoes.add(Exit);
+
+        jMenuBar1.add(Opcoes);
 
         setJMenuBar(jMenuBar1);
 
@@ -610,6 +684,42 @@ public void vezDeQuem() {
         quemGanhou();
     }//GEN-LAST:event_Campo9ActionPerformed
 
+    private void DoisJogadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoisJogadoresActionPerformed
+        // Resetando o jogo
+        Campo1.setVisible(true);
+        Campo2.setVisible(true);
+        Campo3.setVisible(true);
+        Campo4.setVisible(true);
+        Campo5.setVisible(true);
+        Campo6.setVisible(true);
+        Campo7.setVisible(true);
+        Campo8.setVisible(true);
+        Campo9.setVisible(true);
+        Campo1.setEnabled(true);
+        Campo2.setEnabled(true);
+        Campo3.setEnabled(true);
+        Campo4.setEnabled(true);
+        Campo5.setEnabled(true);
+        Campo6.setEnabled(true);
+        Campo7.setEnabled(true);
+        Campo8.setEnabled(true);
+        Campo9.setEnabled(true);
+        Campo1.setText("");
+        Campo2.setText("");
+        Campo3.setText("");
+        Campo4.setText("");
+        Campo5.setText("");
+        Campo6.setText("");
+        Campo7.setText("");
+        Campo8.setText("");
+        Campo9.setText("");
+        
+        doisJogadores = true;
+    }//GEN-LAST:event_DoisJogadoresActionPerformed
+
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
+    }//GEN-LAST:event_ExitActionPerformed
+
    
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -653,9 +763,12 @@ public void vezDeQuem() {
     private static javax.swing.JButton Campo7;
     private static javax.swing.JButton Campo8;
     private static javax.swing.JButton Campo9;
+    private javax.swing.JMenuItem DoisJogadores;
+    private javax.swing.JMenuItem Exit;
+    private javax.swing.JMenu ModoDeJogo;
+    private javax.swing.JMenu Opcoes;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -663,5 +776,6 @@ public void vezDeQuem() {
     private javax.swing.JSeparator jSeparator4;
     private static javax.swing.JLabel lblGanhador;
     private javax.swing.JLabel lblVezDeQuem;
+    private javax.swing.JMenuItem vsCPU;
     // End of variables declaration//GEN-END:variables
 }
