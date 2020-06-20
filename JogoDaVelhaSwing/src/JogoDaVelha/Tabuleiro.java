@@ -4,7 +4,9 @@ import java.util.Random;
 
 
 public class Tabuleiro extends javax.swing.JFrame {
+    
     static int turno = 0;
+    static boolean ganhou = false;
     static boolean doisJogadores = false;
     
     boolean posicao1 = false;
@@ -17,49 +19,88 @@ public class Tabuleiro extends javax.swing.JFrame {
     boolean posicao8 = false;
     boolean posicao9 = false;
     
-    public void vsCPU(){
+    public static void vsCPU(){
+        if (ganhou == false) {
         Random random = new Random();
         int valorAleatorio = random.nextInt(9) + 0;
+        if (valorAleatorio == 0) {
+            vsCPU();
+        }
         if (valorAleatorio == 1) {
-            if (Campo1.getText().equalsIgnoreCase("")) {
+            if (Campo1.getText().equalsIgnoreCase("")) { 
                 Campo1.setText("O"); 
+         }else {
+                quemGanhou();
+                vsCPU();
+            }
         }else if (valorAleatorio == 2) {
-            if (Campo2.getText().equalsIgnoreCase("")) {
+            if (Campo2.getText().equalsIgnoreCase("")) { 
                 Campo2.setText("O"); 
+            }else {
+                quemGanhou();
+                vsCPU();
+            }
         }else if (valorAleatorio == 3) {
             if (Campo3.getText().equalsIgnoreCase("")) {
                 Campo3.setText("O"); 
+            }else {
+                quemGanhou();
+                vsCPU();
+            }
         }else if (valorAleatorio == 4) {
             if (Campo4.getText().equalsIgnoreCase("")) {
                 Campo4.setText("O"); 
+            }else {
+                quemGanhou();
+                vsCPU();
+            }
         }else if (valorAleatorio == 5) {
-            if (Campo5.getText().equalsIgnoreCase("")) {
+            if (Campo5.getText().equalsIgnoreCase("")) { 
                 Campo5.setText("O"); 
+            }else {
+                quemGanhou();
+                vsCPU();
+            }
         }else if (valorAleatorio == 6) {
             if (Campo6.getText().equalsIgnoreCase("")) {
                 Campo6.setText("O"); 
+            }else {
+                quemGanhou();
+                vsCPU();
+            }
         }else if (valorAleatorio == 7) {
             if (Campo7.getText().equalsIgnoreCase("")) {
                 Campo7.setText("O"); 
+            }else {
+                quemGanhou();
+                vsCPU();
+            }
         }else if (valorAleatorio == 8) {
             if (Campo8.getText().equalsIgnoreCase("")) {
                 Campo8.setText("O"); 
+            }else {
+                quemGanhou();
+                vsCPU();
+            }
         }else if (valorAleatorio == 9) {
             if (Campo9.getText().equalsIgnoreCase("")) {
                 Campo9.setText("O"); 
-                                           }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }   
+            }else {
+                quemGanhou();
+                vsCPU();
             }
+        }
+      }
+    }
+    
+    public static void deuVelha() {
+        if (Campo1.getText() != "" && Campo2.getText() != "" && Campo3.getText() != "" && Campo4.getText() != "" && Campo5.getText() != "" && Campo6.getText() != "" && Campo7.getText() != "" && Campo8.getText() != "" && Campo9.getText() != "" && ganhou == false) {
+            lblGanhador.setText("Deu Velha");
+            System.out.println("Deu velha");
         }
     }
     
-public static void quemGanhou() {
+    public static void quemGanhou() {
     
     // Jogador X vencedor
     if (Campo1.getText().equalsIgnoreCase("X") && Campo2.getText().equalsIgnoreCase("X") && Campo3.getText().equalsIgnoreCase("X")) {
@@ -73,6 +114,8 @@ public static void quemGanhou() {
         Campo7.setVisible(false);
         Campo8.setVisible(false);
         Campo9.setVisible(false);
+        ganhou = true;
+        
     }else if  (Campo4.getText().equalsIgnoreCase("X") && Campo5.getText().equalsIgnoreCase("X") && Campo6.getText().equalsIgnoreCase("X")) {
         lblGanhador.setText("  Jogador1 Vencedor!!  ");
         Campo1.setVisible(false);
@@ -84,6 +127,7 @@ public static void quemGanhou() {
         Campo7.setVisible(false);
         Campo8.setVisible(false);
         Campo9.setVisible(false);
+        ganhou = true;
     }else if  (Campo7.getText().equalsIgnoreCase("X") && Campo8.getText().equalsIgnoreCase("X") && Campo9.getText().equalsIgnoreCase("X")) {
         lblGanhador.setText("  Jogador1 Vencedor!!  ");
         Campo1.setVisible(false);
@@ -95,6 +139,7 @@ public static void quemGanhou() {
         Campo7.setVisible(false);
         Campo8.setVisible(false);
         Campo9.setVisible(false);
+        ganhou = true;
     }else if  (Campo1.getText().equalsIgnoreCase("X") && Campo4.getText().equalsIgnoreCase("X") && Campo7.getText().equalsIgnoreCase("X")) {
         lblGanhador.setText("  Jogador1 Vencedor!!  ");
         Campo1.setVisible(false);
@@ -106,6 +151,7 @@ public static void quemGanhou() {
         Campo7.setVisible(false);
         Campo8.setVisible(false);
         Campo9.setVisible(false);
+        ganhou = true;
     }else if  (Campo2.getText().equalsIgnoreCase("X") && Campo5.getText().equalsIgnoreCase("X") && Campo8.getText().equalsIgnoreCase("X")) {
         lblGanhador.setText("  Jogador1 Vencedor!!  ");
         Campo1.setVisible(false);
@@ -117,6 +163,7 @@ public static void quemGanhou() {
         Campo7.setVisible(false);
         Campo8.setVisible(false);
         Campo9.setVisible(false);
+        ganhou = true;
     }else if  (Campo3.getText().equalsIgnoreCase("X") && Campo6.getText().equalsIgnoreCase("X") && Campo9.getText().equalsIgnoreCase("X")) {
         lblGanhador.setText("  Jogador1 Vencedor!!  ");
         Campo1.setVisible(false);
@@ -128,6 +175,7 @@ public static void quemGanhou() {
         Campo7.setVisible(false);
         Campo8.setVisible(false);
         Campo9.setVisible(false);
+        ganhou = true;
     }else if (Campo1.getText().equalsIgnoreCase("X") && Campo5.getText().equalsIgnoreCase("X") && Campo9.getText().equalsIgnoreCase("X")) {
         lblGanhador.setText("  Jogador1 Vencedor!!  ");
         Campo1.setVisible(false);
@@ -139,6 +187,7 @@ public static void quemGanhou() {
         Campo7.setVisible(false);
         Campo8.setVisible(false);
         Campo9.setVisible(false);
+        ganhou = true;
     }else if (Campo7.getText().equalsIgnoreCase("X") && Campo5.getText().equalsIgnoreCase("X") && Campo3.getText().equalsIgnoreCase("X")) {
         lblGanhador.setText("  Jogador1 Vencedor!!  ");
         Campo1.setVisible(false);
@@ -150,6 +199,7 @@ public static void quemGanhou() {
         Campo7.setVisible(false);
         Campo8.setVisible(false);
         Campo9.setVisible(false);
+        ganhou = true;
     }
     
     // Jogador "O" Vencedor
@@ -246,12 +296,13 @@ public static void quemGanhou() {
     
 }
 
-public void vezDeQuem() {
+    public void vezDeQuem() {
         if (turno == 0) {
             lblVezDeQuem.setText("O");
         }else if (turno == 1) {
             lblVezDeQuem.setText("X");
         }
+
 }
   
     public Tabuleiro() {
@@ -279,6 +330,7 @@ public void vezDeQuem() {
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         lblGanhador = new javax.swing.JLabel();
+        lblVsCPU = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         ModoDeJogo = new javax.swing.JMenu();
@@ -289,81 +341,101 @@ public void vezDeQuem() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Jogo da velha");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Campo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Campo1ActionPerformed(evt);
             }
         });
+        getContentPane().add(Campo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 61, 80, 66));
 
         Campo9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Campo9ActionPerformed(evt);
             }
         });
+        getContentPane().add(Campo9, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 219, 80, 66));
 
         jLabel2.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         jLabel2.setText("Jogando: ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 1, -1, -1));
 
         lblVezDeQuem.setText("X");
+        getContentPane().add(lblVezDeQuem, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 0, 30, 20));
 
         Campo4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Campo4ActionPerformed(evt);
             }
         });
+        getContentPane().add(Campo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 61, 80, 66));
 
         Campo7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Campo7ActionPerformed(evt);
             }
         });
+        getContentPane().add(Campo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 59, 80, 66));
 
         Campo2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Campo2ActionPerformed(evt);
             }
         });
+        getContentPane().add(Campo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 139, 80, 66));
 
         Campo5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Campo5ActionPerformed(evt);
             }
         });
+        getContentPane().add(Campo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 139, 80, 66));
 
         Campo8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Campo8ActionPerformed(evt);
             }
         });
+        getContentPane().add(Campo8, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 139, 80, 66));
 
         Campo3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Campo3ActionPerformed(evt);
             }
         });
+        getContentPane().add(Campo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 219, 80, 66));
 
         Campo6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Campo6ActionPerformed(evt);
             }
         });
+        getContentPane().add(Campo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 219, 80, 66));
 
         jSeparator1.setBackground(new java.awt.Color(1, 1, 1));
         jSeparator1.setForeground(new java.awt.Color(1, 1, 1));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 49, 10, 250));
 
         jSeparator2.setBackground(new java.awt.Color(1, 1, 1));
         jSeparator2.setForeground(new java.awt.Color(1, 1, 1));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 49, 10, 250));
 
         jSeparator3.setBackground(new java.awt.Color(1, 1, 1));
         jSeparator3.setForeground(new java.awt.Color(1, 1, 1));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 209, 290, 10));
 
         jSeparator4.setBackground(new java.awt.Color(1, 1, 1));
         jSeparator4.setForeground(new java.awt.Color(1, 1, 1));
+        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 129, 290, 10));
 
         lblGanhador.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        getContentPane().add(lblGanhador, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 127, 225, 28));
+
+        lblVsCPU.setText("VsCPU");
+        getContentPane().add(lblVsCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 43, -1));
 
         jMenu1.setText("Novo Jogo");
 
@@ -378,6 +450,11 @@ public void vezDeQuem() {
         ModoDeJogo.add(DoisJogadores);
 
         vsCPU.setText("Vs CPU");
+        vsCPU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vsCPUActionPerformed(evt);
+            }
+        });
         ModoDeJogo.add(vsCPU);
 
         jMenu1.add(ModoDeJogo);
@@ -398,113 +475,13 @@ public void vezDeQuem() {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblVezDeQuem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(lblGanhador, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(92, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Campo3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(100, 100, 100)
-                            .addComponent(Campo5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(190, 190, 190)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(200, 200, 200)
-                            .addComponent(Campo9, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(85, 85, 85)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(99, 99, 99)
-                            .addComponent(Campo4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(100, 100, 100)
-                            .addComponent(Campo6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Campo2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(1, 1, 1)
-                            .addComponent(Campo1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(200, 200, 200)
-                            .addComponent(Campo7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(200, 200, 200)
-                            .addComponent(Campo8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblVezDeQuem, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(112, 112, 112)
-                .addComponent(lblGanhador, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 119, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 27, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(170, 170, 170)
-                            .addComponent(Campo3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(90, 90, 90)
-                            .addComponent(Campo5, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(170, 170, 170)
-                            .addComponent(Campo9, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(12, 12, 12)
-                            .addComponent(Campo4, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(170, 170, 170)
-                            .addComponent(Campo6, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(80, 80, 80)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(90, 90, 90)
-                            .addComponent(Campo2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(12, 12, 12)
-                            .addComponent(Campo1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(Campo7, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(160, 160, 160)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(90, 90, 90)
-                            .addComponent(Campo8, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 2, Short.MAX_VALUE)))
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void Campo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo1ActionPerformed
+        // Jogando contra player
+        if (doisJogadores == true) {
+        deuVelha();
         vezDeQuem();
         if (turno == 0) {
             Campo1.setText("X");
@@ -521,11 +498,23 @@ public void vezDeQuem() {
                     Campo1.setEnabled(false);
                 }
         }
+        
+        // Jogando contra CPU
+        }else {
+            quemGanhou();
+            deuVelha();
+            Campo1.setText("X");
+            vsCPU();
+        }
+        deuVelha();
         quemGanhou();
     }//GEN-LAST:event_Campo1ActionPerformed
 
     private void Campo4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo4ActionPerformed
+        // Jogando contra player
+        if (doisJogadores == true) {
         vezDeQuem();
+        deuVelha();
         if (turno == 0) {
             Campo4.setText("X");
             posicao4 = true;
@@ -541,11 +530,23 @@ public void vezDeQuem() {
                     Campo4.setEnabled(false);
                 }
         }
+        
+        // Jogando contra CPU
+        }else {
+            deuVelha();
+            quemGanhou();
+            Campo4.setText("X");
+            vsCPU();
+        }
+        deuVelha();
         quemGanhou();
     }//GEN-LAST:event_Campo4ActionPerformed
 
     private void Campo7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo7ActionPerformed
+        // Jogando contra player
+        if (doisJogadores == true) {
         vezDeQuem();
+        deuVelha();
         if (turno == 0) {
             Campo7.setText("X");
             posicao7 = true;
@@ -561,11 +562,23 @@ public void vezDeQuem() {
                     Campo7.setEnabled(false);
                 }
         }
+        
+        // Jogando contra CPU
+        }else {
+            quemGanhou();
+            deuVelha();
+            Campo7.setText("X");
+            vsCPU();
+        }
         quemGanhou();
+        deuVelha();
     }//GEN-LAST:event_Campo7ActionPerformed
 
     private void Campo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo2ActionPerformed
+        // Jogando contra player
+        if (doisJogadores == true) {
         vezDeQuem();
+        deuVelha();
         if (turno == 0) {
             Campo2.setText("X");
             posicao2 = true;
@@ -581,11 +594,23 @@ public void vezDeQuem() {
                     Campo2.setEnabled(false);
                 }
         }
+        
+        // Jogando contra CPU
+        }else {
+            quemGanhou();
+            deuVelha();
+            Campo2.setText("X");
+            vsCPU();
+        }
         quemGanhou();
+        deuVelha();
     }//GEN-LAST:event_Campo2ActionPerformed
 
     private void Campo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo3ActionPerformed
+        // Jogando contra player
+        if (doisJogadores == true) {
         vezDeQuem();
+        deuVelha();
         if (turno == 0) {
             Campo3.setText("X");
             posicao3 = true;
@@ -601,11 +626,23 @@ public void vezDeQuem() {
                     Campo3.setEnabled(false);
                 }
         }
+        
+        // Jogando contra CPU
+        }else {
+            quemGanhou();
+            deuVelha();
+            Campo3.setText("X");
+            vsCPU();
+        }
         quemGanhou();
+        deuVelha();
     }//GEN-LAST:event_Campo3ActionPerformed
 
     private void Campo5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo5ActionPerformed
+        // Jogando contra player
+        if (doisJogadores == true) {
         vezDeQuem();
+        deuVelha();
         if (turno == 0) {
             Campo5.setText("X");
             posicao5 = true;
@@ -621,11 +658,23 @@ public void vezDeQuem() {
                     Campo5.setEnabled(false);
                 }
         }
+        
+        // Jogando contra CPU
+        }else {
+            quemGanhou();
+            deuVelha();
+            Campo5.setText("X");
+            vsCPU();
+        }
         quemGanhou();
+        deuVelha();
     }//GEN-LAST:event_Campo5ActionPerformed
 
     private void Campo6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo6ActionPerformed
+        // Jogando contra player
+        if (doisJogadores == true) {
         vezDeQuem();
+        deuVelha();
         if (turno == 0) {
             Campo6.setText("X");
             posicao6 = true;
@@ -641,11 +690,23 @@ public void vezDeQuem() {
                     Campo6.setEnabled(false);
                 }
         }
+        
+        // Jogando contra CPU
+        }else {
+            quemGanhou();
+            deuVelha();
+            Campo6.setText("X");
+            vsCPU();
+        }
         quemGanhou();
+        deuVelha();
     }//GEN-LAST:event_Campo6ActionPerformed
 
     private void Campo8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo8ActionPerformed
+        // Jogando contra player
+        if (doisJogadores == true) {
         vezDeQuem();
+        deuVelha();
         if (turno == 0) {
             Campo8.setText("X");
             posicao8 = true;
@@ -661,11 +722,23 @@ public void vezDeQuem() {
                     Campo8.setEnabled(false);
                 }
         }
+        
+        // Jogando contra CPU
+        }else {
+            quemGanhou();
+            deuVelha();
+            Campo8.setText("X");
+            vsCPU();
+        }
         quemGanhou();
+        deuVelha();
     }//GEN-LAST:event_Campo8ActionPerformed
 
     private void Campo9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo9ActionPerformed
-      vezDeQuem();
+        // Jogando contra player
+        if (doisJogadores == true) {
+        vezDeQuem();
+        deuVelha();
         if (turno == 0) {
             Campo9.setText("X");
             posicao9 = true;
@@ -681,11 +754,22 @@ public void vezDeQuem() {
                     Campo9.setEnabled(false);
                 }
         }
+        
+        // Jogando contra CPU
+        }else {
+            quemGanhou();
+            deuVelha();
+            Campo9.setText("X");
+            vsCPU();
+        }
         quemGanhou();
+        deuVelha();
     }//GEN-LAST:event_Campo9ActionPerformed
 
     private void DoisJogadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoisJogadoresActionPerformed
         // Resetando o jogo
+        lblVsCPU.setText("Jogador1 x Jogador2");
+        lblGanhador.setVisible(false);
         Campo1.setVisible(true);
         Campo2.setVisible(true);
         Campo3.setVisible(true);
@@ -719,6 +803,40 @@ public void vezDeQuem() {
 
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
     }//GEN-LAST:event_ExitActionPerformed
+
+    private void vsCPUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vsCPUActionPerformed
+        vsCPU();
+        lblGanhador.setVisible(false);
+        Campo1.setVisible(true);
+        Campo2.setVisible(true);
+        Campo3.setVisible(true);
+        Campo4.setVisible(true);
+        Campo5.setVisible(true);
+        Campo6.setVisible(true);
+        Campo7.setVisible(true);
+        Campo8.setVisible(true);
+        Campo9.setVisible(true);
+        Campo1.setEnabled(true);
+        Campo2.setEnabled(true);
+        Campo3.setEnabled(true);
+        Campo4.setEnabled(true);
+        Campo5.setEnabled(true);
+        Campo6.setEnabled(true);
+        Campo7.setEnabled(true);
+        Campo8.setEnabled(true);
+        Campo9.setEnabled(true);
+        Campo1.setText("");
+        Campo2.setText("");
+        Campo3.setText("");
+        Campo4.setText("");
+        Campo5.setText("");
+        Campo6.setText("");
+        Campo7.setText("");
+        Campo8.setText("");
+        Campo9.setText("");
+        
+        doisJogadores = false;
+    }//GEN-LAST:event_vsCPUActionPerformed
 
    
     public static void main(String args[]) {
@@ -776,6 +894,7 @@ public void vezDeQuem() {
     private javax.swing.JSeparator jSeparator4;
     private static javax.swing.JLabel lblGanhador;
     private javax.swing.JLabel lblVezDeQuem;
+    private javax.swing.JLabel lblVsCPU;
     private javax.swing.JMenuItem vsCPU;
     // End of variables declaration//GEN-END:variables
 }
